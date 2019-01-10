@@ -38,7 +38,7 @@ export class CommandsHandler {
                 this.counterRunning = true;
                 CodesHandler.reset(this.codesChannel);
 
-                /*timer(0, 1000)
+                timer(0, 1000)
                     .pipe(
                         take(4),
                         map(i => 3 - i)
@@ -52,7 +52,7 @@ export class CommandsHandler {
                                 this.enableTimeout = setTimeout(this.cancelTimeout.bind(this), timeout);
                             });
                         }
-                    });*/
+                    });
                 break;
 
             case 'cancel':

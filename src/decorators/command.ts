@@ -10,10 +10,12 @@ export function Command() {
         const original: Function = descriptor.value;
 
         descriptor.value = function () {
+            console.log('validating command');
             const context = this;
             const message: Message = arguments[0];
 
             if (message.content.startsWith(prefix)) {
+                console.log('is a command, calling next validation');
                 original.call(context, ...arguments);
             }
         }

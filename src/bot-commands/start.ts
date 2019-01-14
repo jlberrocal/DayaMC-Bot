@@ -24,7 +24,6 @@ export class Start implements ICommand {
     @RequireTextChannel()
     @RequireVoiceChannel()
     handle(message: Message): void {
-        console.log('handling');
         BotChannel
             .findOne({
                 where: {
@@ -40,11 +39,13 @@ export class Start implements ICommand {
                     .join()
                     .then(con => {
                         return new Promise(resolve => {
+                            console.log(this.countdownPath);
                             const dispatcher = con.playFile(this.countdownPath, {
                                 bitrate: 96
                             });
 
                             dispatcher.on('end', () => {
+                                console.log('stream end');
                                 channel!.leave();
                                 resolve();
                             });
@@ -59,7 +60,9 @@ export class Start implements ICommand {
                             }
                         });
                     })
-                    .then(channel => message.guild.channels.find(c => c.id === channel!.channelId) as TextChannel)
+                    .then(channel => {
+                        return message.guild.channels.find(c => c.id === channel!.channelId) as TextChannel;
+                    })
                     .then((channel: TextChannel | null) => {
                         if (!channel) {
                             return;

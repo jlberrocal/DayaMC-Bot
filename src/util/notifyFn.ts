@@ -1,5 +1,5 @@
 import {Match} from "../models/match";
-import {Resolver} from "../util/resolver";
+import {Resolver} from "./resolver";
 import {Message} from "discord.js";
 
 export function notify() {

@@ -6,14 +6,17 @@ export function RequireRole(roleName: string) {
         const original: Function = descriptor.value;
 
         descriptor.value = function () {
+            console.log('calling role validation');
             const context = this;
             const message: Message = arguments[0];
 
             const role = message.guild.roles.find((r => r.name === roleName));
 
             if (!role) {
+                console.log('role is not created');
                 message.reply(`Debes crear el rol \`${roleName}\` y pertenecer a él`);
             } else if (!message.member.roles.has(role.id)) {
+                console.log('user does not have the required role');
                 BotChannel.count({
                     where: {
                         guild: message.guild.id,
@@ -26,6 +29,7 @@ export function RequireRole(roleName: string) {
                     }
                 });
             } else {
+                console.log('has the role, calling next validation');
                 original.call(context, ...arguments);
             }
         }

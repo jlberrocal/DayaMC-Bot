@@ -10,6 +10,7 @@ import {RequireCodesChannel} from "../decorators/requireCodesChannel";
 import {ContentLength} from "../decorators/content-length";
 import {Match} from "../models/match";
 import {RequireRunningMatch} from "../decorators/requireRunningMatch";
+import {OnlyCodesChannel} from "../decorators/OnlyCodesChannel";
 
 const readdir = promisify(readdirCb);
 
@@ -21,7 +22,7 @@ export class MessagesHandler {
         this.client = Resolver.get('bot');
 
         readdir(handlersPath)
-            .then(fileNames => fileNames.map(name => name.replace('.ts', '').replace('.js', '')))
+            .then(fileNames => fileNames.filter(name => !name.endsWith('.d.ts')).map(name => name.replace('.ts', '').replace('.js', '')))
             .then((commandNames: string[]) => {
                 commandNames.forEach(commandName => {
                     const module = require(join(handlersPath, commandName));
@@ -32,7 +33,7 @@ export class MessagesHandler {
                     const name = Object.keys(module).find(key => key.toLowerCase() === commandName);
                     if (name) {
                         const klass = module[name];
-                        this.handlers.set(commandName, new klass());
+                        this.handlers.set(commandName.toLowerCase().trim(), new klass());
                     }
                 });
             })
@@ -46,16 +47,19 @@ export class MessagesHandler {
             return; //bot should do nothing to his own messages
         }
 
-        const command = content.replace(prefix, '');
-        const commandHandler = this.handlers.get(command);
-        if (commandHandler) {
-            commandHandler.handle(message);
+        if (content.startsWith(prefix)) {
+            console.log('handling as command');
+            const command = content.replace(prefix, '').toLowerCase().trim();
+            const commandHandler = this.handlers.get(command);
+            console.log(commandHandler);
+            commandHandler!.handle(message);
         } else {
+            console.log('handling as code message');
             this.handleCodesMessages(message);
         }
     }
 
-    @RequireCodesChannel()
+    @OnlyCodesChannel()
     @RequireRunningMatch()
     @ContentLength()
     private handleCodesMessages(message: Message) {

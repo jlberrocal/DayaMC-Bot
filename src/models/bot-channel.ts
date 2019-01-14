@@ -1,15 +1,18 @@
 import {AutoIncrement, Column, DataType, Model, PrimaryKey, Table} from "sequelize-typescript";
 
 @Table
-export class Roles extends Model<Roles> {
+export class BotChannel extends Model<BotChannel> {
     @PrimaryKey
     @AutoIncrement
     @Column(DataType.INTEGER)
     id?: number;
 
     @Column(DataType.TEXT)
-    name?: string;
+    channelId?: string;
 
     @Column(DataType.TEXT)
     guild?: string;
+
+    @Column(DataType.ENUM('Voice', 'Text', 'Codes'))
+    type?: 'Voice' | 'Text' | 'Codes';
 }

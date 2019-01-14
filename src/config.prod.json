@@ -1,6 +1,6 @@
 {
   "token": "NTE3MTMzNjIxMzQyMjQwNzc5.Dt9yyA.LfG3rLsr9pLDe8OLVRaGBBUuWy8",
-  "serverId": "506560699426799627",
-  "authorizedUsers": ["jlberrocal#3183","DayaMC#2015","-JKGM-#4021"],
-  "timeout": 300000
+  "timeout": 300000,
+  "prefix": "!DMC",
+  "role": "Screams"
 }

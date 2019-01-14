@@ -1,4 +1,6 @@
 {
   "token": "NTMyNzM5NDk0MzQwODUzNzcy.Dxg5oA.Br7Qa8efjK1lRmGXlFYGEiD7qsE",
-  "timeout": 25000
+  "timeout": 25000,
+  "prefix": "!",
+  "role": "Screams"
 }

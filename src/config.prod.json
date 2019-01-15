@@ -1,7 +1,7 @@
 {
   "token": "NTMyNzM5NDk0MzQwODUzNzcy.Dx7agQ.jHKgyq44FTneuU5dEOq-JAnarek",
   "timeout": 300000,
-  "prefix": "!!!",
+  "prefix": "!scrim",
   "role": "Scrims",
   "prod": true
 }

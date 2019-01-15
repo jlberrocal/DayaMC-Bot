@@ -73,7 +73,6 @@ export class Configure implements ICommand {
                     id: guild.id
                 }
             ]).then((channel: GuildChannel) => {
-                channel.setTopic('Por favor silencia tu micro para evitar interferencias o baneos');
                 const botChannel = new BotChannel({
                     channelId: channel.id,
                     type: 'Voice',

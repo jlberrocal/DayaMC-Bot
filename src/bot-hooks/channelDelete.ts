@@ -3,7 +3,7 @@ import {BotChannel} from "../models";
 import {prefix} from '../config.json';
 
 export default function (channel: TextChannel | VoiceChannel) {
-    console.log('a channel have deleted');
+    console.log('a channel was deleted');
     const {guild} = channel;
     const generalChannel = guild.channels.find(c => c.id === guild.systemChannelID || c.type === 'text') as TextChannel;
 

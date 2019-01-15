@@ -1,4 +1,4 @@
-import {Match} from "../models/match";
+import {Match} from "../models";
 import {Resolver} from "./resolver";
 import {Message} from "discord.js";
 

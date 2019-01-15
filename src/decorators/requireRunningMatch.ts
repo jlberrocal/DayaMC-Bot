@@ -1,5 +1,5 @@
 import {Message} from "discord.js";
-import {Resolver} from "../util/resolver";
+import {Resolver} from "../util";
 
 export function RequireRunningMatch() {
     return function handler(target: any, propertyName: string, descriptor: PropertyDescriptor) {

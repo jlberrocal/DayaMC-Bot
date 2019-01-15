@@ -1,10 +1,7 @@
-import {Command, ICommand} from "../decorators/command";
+import {Command, GuildOnly, ICommand, RequireRole, RequireRunningMatch} from "../decorators";
 import {Message} from "discord.js";
-import {GuildOnly} from "../decorators/guildOnly";
-import {RequireRunningMatch} from "../decorators/requireRunningMatch";
 import {role} from '../config.json';
-import {RequireRole} from "../decorators/requireRole";
-import {clearMatch} from "../util/clear-match";
+import {clearMatch} from "../util";
 
 export class Cancel implements ICommand {
 

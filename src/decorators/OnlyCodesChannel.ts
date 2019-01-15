@@ -1,5 +1,5 @@
 import {Message} from "discord.js";
-import {BotChannel} from "../models/bot-channel";
+import {BotChannel} from "../models";
 
 export function OnlyCodesChannel() {
     return function handler(target: any, propertyName: string, descriptor: PropertyDescriptor) {
@@ -18,8 +18,7 @@ export function OnlyCodesChannel() {
             }).then((channel: BotChannel | null) => {
                 if (!channel) {
                     console.log('codes channel does not exists');
-                }
-                else if (channel.channelId !== message.channel.id) {
+                } else if (channel.channelId !== message.channel.id) {
                     console.log('ignoring message, it came from another channel');
                     return;
                 }

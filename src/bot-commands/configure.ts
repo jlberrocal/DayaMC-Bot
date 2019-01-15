@@ -1,9 +1,7 @@
-import {Command, ICommand} from "../decorators/command";
+import {Command, GuildOnly, ICommand, RequireRole} from "../decorators";
 import {GuildChannel, Message, Permissions} from "discord.js";
-import {GuildOnly} from "../decorators/guildOnly";
-import {RequireRole} from "../decorators/requireRole";
 import {role} from "../config.json";
-import {BotChannel} from "../models/bot-channel";
+import {BotChannel} from "../models";
 
 export class Configure implements ICommand {
 

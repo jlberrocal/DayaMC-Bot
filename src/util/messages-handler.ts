@@ -3,14 +3,10 @@ import {promisify} from "util";
 import {join} from "path";
 import {Client, Message} from "discord.js";
 import {prefix} from '../config.json';
-import {ICommand} from "../decorators/command";
+import {ContentLength, ICommand, OnlyCodesChannel, RequireRunningMatch} from "../decorators";
 import {Resolver} from "./resolver";
 import {all} from 'bluebird';
-import {RequireCodesChannel} from "../decorators/requireCodesChannel";
-import {ContentLength} from "../decorators/content-length";
-import {Match} from "../models/match";
-import {RequireRunningMatch} from "../decorators/requireRunningMatch";
-import {OnlyCodesChannel} from "../decorators/OnlyCodesChannel";
+import {Match} from "../models";
 
 const readdir = promisify(readdirCb);
 

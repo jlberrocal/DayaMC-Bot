@@ -1,11 +1,7 @@
 import {Client} from 'discord.js';
 import {token} from './config.json'
 import {join} from 'path';
-import {Resolver} from "./util/resolver";
-import {loadBotHooks} from './util/load-bot-hooks';
-import {loadDbHooks} from './util/load-db-hooks';
-import {initializeDb} from "./util/initialize-db";
-import {MessagesHandler} from "./util/messages-handler";
+import {initializeDb, loadBotHooks, loadDbHooks, MessagesHandler, Resolver} from "./util";
 
 const client = new Client();
 initializeDb([__dirname + '/models']);

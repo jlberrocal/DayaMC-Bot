@@ -1,4 +1,4 @@
-import {Resolver} from "../util/resolver";
+import {Resolver} from "../util";
 import {Client} from "discord.js";
 import {prefix} from "../config.json";
 

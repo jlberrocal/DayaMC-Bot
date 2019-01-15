@@ -1,4 +1,4 @@
-import {BotChannel} from "../models/bot-channel";
+import {BotChannel} from "../models";
 import {Message} from "discord.js";
 import {prefix} from '../config.json';
 
@@ -17,10 +17,10 @@ export function RequireVoiceChannel() {
                     type: 'Voice'
                 }
             }).then((channel: BotChannel | null) => {
-                if(!channel) {
+                if (!channel) {
                     console.log('voice channel does not exists');
                     message.reply(`Debes primero establecer el chat de voz donde se hará el conteo, usa para ello el comando \`${prefix}speak\``)
-                } else if(!message.guild.channels.find(c => c.id === channel.channelId)) {
+                } else if (!message.guild.channels.find(c => c.id === channel.channelId)) {
                     console.log('voice channel was deleted');
                     message.reply('El chat de voz fue eliminado')
                 } else {

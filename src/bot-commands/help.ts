@@ -1,8 +1,6 @@
-import {Command, ICommand} from "../decorators/command";
+import {Command, GuildOnly, ICommand, RequireRole} from "../decorators";
 import {Message} from "discord.js";
 import {prefix, role} from '../config.json';
-import {GuildOnly} from "../decorators/guildOnly";
-import {RequireRole} from "../decorators/requireRole";
 
 export class Help implements ICommand {
 

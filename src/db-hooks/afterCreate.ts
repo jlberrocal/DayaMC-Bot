@@ -1,5 +1,5 @@
-import {Match} from "../models/match";
-import {notify} from "../util/notify";
+import {Match} from "../models";
+import {notify} from "../util";
 
 export default function () {
     Match.afterCreate('notifyOnChannel', notify);

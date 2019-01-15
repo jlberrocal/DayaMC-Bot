@@ -1,6 +1,6 @@
 import {Message} from "discord.js";
 import {Resolver} from "./resolver";
-import {Match} from "../models/match";
+import {Match} from "../models";
 
 export function clearMatch() {
     const msgRef: Message | number = Resolver.get('message');

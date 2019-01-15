@@ -1,5 +1,5 @@
 import {Message} from "discord.js";
-import {BotChannel} from "../models/bot-channel";
+import {BotChannel} from "../models";
 
 export function RequireRole(roleName: string) {
     return function handler(target: any, propertyKey: string, descriptor: PropertyDescriptor) {

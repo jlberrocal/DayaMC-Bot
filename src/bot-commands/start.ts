@@ -1,14 +1,9 @@
-import {Command, ICommand} from "../decorators/command";
+import {Command, GuildOnly, ICommand, RequireCommandsChannel, RequireRole, RequireVoiceChannel} from "../decorators";
 import {Message, TextChannel, VoiceChannel} from "discord.js";
-import {GuildOnly} from "../decorators/guildOnly";
-import {RequireRole} from "../decorators/requireRole";
 import {role, timeout} from "../config.json";
-import {RequireCommandsChannel} from "../decorators/requireCommandsChannel";
-import {BotChannel} from "../models/bot-channel";
+import {BotChannel} from "../models";
 import {join} from "path";
-import {Resolver} from "../util/resolver";
-import {RequireVoiceChannel} from "../decorators/requireVoiceChannels";
-import {clearMatch} from "../util/clear-match";
+import {clearMatch, Resolver} from "../util";
 
 export class Start implements ICommand {
     private readonly countdownPath: string;

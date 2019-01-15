@@ -6,7 +6,7 @@ import {Client} from "discord.js";
 
 const readdir = promisify(readCb);
 
-export function loadBotHooks (hooksPath: string) {
+export function loadBotHooks(hooksPath: string) {
     const client = Resolver.get('bot') as Client;
 
     readdir(hooksPath)

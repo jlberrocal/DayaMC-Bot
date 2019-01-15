@@ -13,9 +13,4 @@ export class Resolver {
 
         return this.modules.get(name);
     }
-
-    static release(name: string): Resolver {
-        this.modules.delete(name);
-        return Resolver;
-    }
 }

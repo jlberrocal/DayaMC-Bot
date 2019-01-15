@@ -18,7 +18,15 @@ export class MessagesHandler {
         this.client = Resolver.get('bot');
 
         readdir(handlersPath)
-            .then(fileNames => fileNames.filter(name => !name.endsWith('.d.ts')).map(name => name.replace('.ts', '').replace('.js', '')))
+            .then(fileNames => {
+                return fileNames
+                    .filter(name => !name.endsWith('.d.ts'))
+                    .filter(name => !name.startsWith('index'))
+                    .map(name => name
+                        .replace('.ts', '')
+                        .replace('.js', '')
+                    )
+            })
             .then((commandNames: string[]) => {
                 commandNames.forEach(commandName => {
                     const module = require(join(handlersPath, commandName));

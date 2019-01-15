@@ -8,7 +8,17 @@ export function clearMatch() {
 
     if (msgRef !== 0) {
         Match.truncate()
-            .then(() => (msgRef as Message).delete())
+            .then(() => {
+                if(msgRef instanceof Message) {
+                    const {guild, channel} = msgRef;
+                    msgRef.delete().then(() => {
+                        const guildChannel = guild.channels.find(c => c.id === channel.id);
+                        return guildChannel.overwritePermissions(guild.id, {
+                            SEND_MESSAGES: true
+                        });
+                    });
+                }
+            })
             .then(() => Resolver.register('message', 0));
     }
 

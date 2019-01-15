@@ -4,7 +4,7 @@ import {join} from 'path';
 import {initializeDb, loadBotHooks, loadDbHooks, MessagesHandler, Resolver} from "./util";
 
 const client = new Client();
-initializeDb([__dirname + '/models']);
+initializeDb([__dirname + '/models/**/*.model.ts']);
 
 Resolver.register('bot', client);
 Resolver.register('message', 0);

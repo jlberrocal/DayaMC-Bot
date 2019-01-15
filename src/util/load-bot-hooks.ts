@@ -13,6 +13,7 @@ export function loadBotHooks(hooksPath: string) {
         .then((files: string[]) => {
             files
                 .filter(file => !file.endsWith('.d.ts'))
+                .filter(fileName => !fileName.startsWith('index'))
                 .map(file => file.replace('.ts', '').replace('.js', ''))
                 .forEach(file => {
                     const modulePath = join(hooksPath, file);

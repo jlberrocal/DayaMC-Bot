@@ -10,7 +10,11 @@ export function initializeDb(modelPaths: string[]) {
         password: '',
         modelPaths: modelPaths,
         modelMatch: ((filename, member) => {
-            return filename.replace('-', '').toLowerCase() === member.toLowerCase();
+            const cleanName = filename
+                .replace('-', '')
+                .replace('.model', '')
+                .toLowerCase();
+            return cleanName === member.toLowerCase();
         }),
         logging: !prod
     });

@@ -1,2 +1,2 @@
-export * from './bot-channel';
-export * from './match';
+export * from './bot-channel.model';
+export * from './match.model';

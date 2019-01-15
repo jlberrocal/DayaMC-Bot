@@ -1,6 +1,6 @@
 import {Match} from "../models";
 import {Resolver} from "./resolver";
-import {Message} from "discord.js";
+import {Message, RichEmbed} from "discord.js";
 
 export function notify() {
     Match.findAll()
@@ -12,21 +12,26 @@ export function notify() {
                 }
             });
 
-            const response = servers.map(server => {
+            const embed = new RichEmbed()
+                .setTitle('**Agrupamiento**');
+
+            servers.forEach(server => {
                 const players = matches
                     .filter(match => match.code === server)
                     .map(match => match.player);
                 const mentions = players
                     .map(player => `<@${player}>`)
                     .join(', ');
-                return `${server} (${players.length} jugadores)\n${mentions}`
-            }).join('\n\n');
+                embed.addField(server, mentions);
+            });
 
             const messageRef = Resolver.get('message') as Message | number;
             if (messageRef === 0) {
                 return;
             }
 
-            (messageRef as Message).edit(response);
+            embed.setFooter('total de jugadores: ' + matches.length);
+
+            (messageRef as Message).edit({embed});
         });
 }

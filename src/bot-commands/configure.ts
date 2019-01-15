@@ -46,6 +46,7 @@ export class Configure implements ICommand {
                     id: guild.id
                 }
             ]).then((channel: GuildChannel) => {
+                channel.setTopic('En este chat los jugadores enviarán el código del server');
                 const botChannel = new BotChannel({
                     channelId: channel.id,
                     type: 'Codes',

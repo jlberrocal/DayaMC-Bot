@@ -53,7 +53,7 @@ export class MessagesHandler {
 
         if (content.startsWith(prefix)) {
             console.log('handling as command');
-            const command = content.replace(prefix, '').toLowerCase().trim();
+            const command = content.replace(prefix, '');
             const commandHandler = this.handlers.get(command);
             if (commandHandler) {
                 commandHandler.handle(message);

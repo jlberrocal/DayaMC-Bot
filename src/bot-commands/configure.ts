@@ -25,6 +25,7 @@ export class Configure implements ICommand {
                     id: guild.id
                 }
             ]).then((channel: GuildChannel) => {
+                channel.setTopic('Usa este canal para iniciar los conteos, debes pertenecer al rol ' + role);
                 const botChannel = new BotChannel({
                     channelId: channel.id,
                     type: 'Commands',
@@ -72,6 +73,7 @@ export class Configure implements ICommand {
                     id: guild.id
                 }
             ]).then((channel: GuildChannel) => {
+                channel.setTopic('Por favor silencia tu micro para evitar interferencias o baneos');
                 const botChannel = new BotChannel({
                     channelId: channel.id,
                     type: 'Voice',

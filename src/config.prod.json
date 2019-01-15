@@ -2,5 +2,6 @@
   "token": "NTE3MTMzNjIxMzQyMjQwNzc5.Dt9yyA.LfG3rLsr9pLDe8OLVRaGBBUuWy8",
   "timeout": 300000,
   "prefix": "!DMC",
-  "role": "Screams"
+  "role": "Screams",
+  "prod": true
 }

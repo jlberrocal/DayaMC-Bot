@@ -51,8 +51,11 @@ export class MessagesHandler {
             console.log('handling as command');
             const command = content.replace(prefix, '').toLowerCase().trim();
             const commandHandler = this.handlers.get(command);
-            console.log(commandHandler);
-            commandHandler!.handle(message);
+            if (commandHandler) {
+                commandHandler.handle(message);
+            } else {
+                console.log(`${command} is not a valid command`);
+            }
         } else {
             console.log('handling as code message');
             this.handleCodesMessages(message);
@@ -61,7 +64,7 @@ export class MessagesHandler {
 
     @OnlyCodesChannel()
     @RequireRunningMatch()
-    @ContentLength()
+    @ContentLength(3)
     private handleCodesMessages(message: Message) {
         const {content, author} = message;
         Match.findOne({
@@ -73,7 +76,7 @@ export class MessagesHandler {
                 player: author.id,
             });
 
-            match.code = message.content.toLowerCase();
+            match.code = content.toLowerCase();
             match.save().then(() => message.delete());
         });
     }

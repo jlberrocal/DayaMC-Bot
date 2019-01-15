@@ -21,7 +21,7 @@ export function RequireRole(roleName: string) {
                     where: {
                         guild: message.guild.id,
                         channelId: message.channel.id,
-                        type: 'Text'
+                        type: 'Commands'
                     }
                 }).then((count: number) => {
                     if (count > 0) {

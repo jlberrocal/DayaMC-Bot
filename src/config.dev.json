@@ -1,6 +1,7 @@
 {
-  "token": "NTMyNzM5NDk0MzQwODUzNzcy.Dxg5oA.Br7Qa8efjK1lRmGXlFYGEiD7qsE",
+  "token": "NTE3MTMzNjIxMzQyMjQwNzc5.Dx7DDQ._V_JbT6mnmayb0tw_yz-gJkn85k",
   "timeout": 25000,
-  "prefix": "!sb",
-  "role": "Scrims"
+  "prefix": "!",
+  "role": "Scrims",
+  "prod": false
 }

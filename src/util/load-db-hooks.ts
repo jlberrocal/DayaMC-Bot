@@ -13,9 +13,6 @@ export function loadDbHooks(hooksPath: string) {
                 .forEach(file => {
                     const modulePath = join(hooksPath, file);
                     const module = require(modulePath);
-                    console.log(modulePath);
-                    console.log(module);
-                    console.log(module.default);
                     const moduleDefault = module.default;
                     moduleDefault();
                 })

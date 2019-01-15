@@ -13,6 +13,6 @@ export class BotChannel extends Model<BotChannel> {
     @Column(DataType.TEXT)
     guild?: string;
 
-    @Column(DataType.ENUM('Voice', 'Text', 'Codes'))
-    type?: 'Voice' | 'Text' | 'Codes';
+    @Column(DataType.ENUM('Voice', 'Commands', 'Codes'))
+    type?: 'Voice' | 'Commands' | 'Codes';
 }

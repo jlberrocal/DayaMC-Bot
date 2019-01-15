@@ -3,12 +3,12 @@ import {Message, TextChannel, VoiceChannel} from "discord.js";
 import {GuildOnly} from "../decorators/guildOnly";
 import {RequireRole} from "../decorators/requireRole";
 import {role, timeout} from "../config.json";
-import {RequireTextChannel} from "../decorators/requireTextChannel";
+import {RequireCommandsChannel} from "../decorators/requireCommandsChannel";
 import {BotChannel} from "../models/bot-channel";
 import {join} from "path";
 import {Resolver} from "../util/resolver";
 import {RequireVoiceChannel} from "../decorators/requireVoiceChannels";
-import {clearMatch} from "../util/clearCodesMsg";
+import {clearMatch} from "../util/clear-match";
 
 export class Start implements ICommand {
     private readonly countdownPath: string;
@@ -21,7 +21,7 @@ export class Start implements ICommand {
     @Command()
     @GuildOnly()
     @RequireRole(role)
-    @RequireTextChannel()
+    @RequireCommandsChannel()
     @RequireVoiceChannel()
     handle(message: Message): void {
         BotChannel

@@ -4,6 +4,7 @@ import {role, timeout} from "../config.json";
 import {BotChannel} from "../models";
 import {join} from "path";
 import {clearMatch, Resolver} from "../util";
+import {NoRunningMatch} from "../decorators/no-running-match";
 
 export class Start implements ICommand {
     private readonly countdownPath: string;
@@ -16,6 +17,7 @@ export class Start implements ICommand {
     @Command()
     @GuildOnly()
     @RequireRole(role)
+    @NoRunningMatch()
     @RequireCommandsChannel()
     @RequireVoiceChannel()
     handle(message: Message): void {

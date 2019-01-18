@@ -14,7 +14,7 @@ export function RequireRunningMatch() {
 
             if (timeout === 0) {
                 console.log('there is no running match at this moment');
-                message.delete();
+                message.reply('No hay partidas para cancelar');
             } else {
                 console.log('there is a running match, calling next validator');
                 original.call(context, ...arguments);

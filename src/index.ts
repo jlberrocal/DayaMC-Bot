@@ -12,7 +12,7 @@ initializeDb([
 Resolver.register('bot', client);
 Resolver.register('message', 0);
 Resolver.register('timeout', 0);
-Resolver.register('sources-path', join(__dirname, 'sources'));
+Resolver.register('sources-path', join(__dirname, '..', 'sources'));
 
 loadBotHooks(join(__dirname, 'bot-hooks'));
 loadDbHooks(join(__dirname, 'db-hooks'));

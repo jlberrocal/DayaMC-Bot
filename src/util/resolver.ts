@@ -1,3 +1,12 @@
+import {BehaviorSubject, Subject, Subscription} from "rxjs";
+import {Client, Message} from "discord.js";
+
+export const MessageRef = new BehaviorSubject<Message|null>(null);
+export const ClientRef = new BehaviorSubject<Client|null>(null);
+export const TimeoutSubscription = new BehaviorSubject<Subscription|null>(null);
+
+export const CancelSignal = new Subject();
+
 export class Resolver {
     private static readonly modules: Map<string, any> = new Map();
 

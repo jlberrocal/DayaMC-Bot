@@ -10,6 +10,7 @@ export class Cancel implements ICommand {
     @RequireRole(role)
     @RequireRunningMatch()
     handle(message: Message): void {
-        clearMatch();
+        clearMatch()
+            .then(() => message.reply('Se ha cancelado la partida'));
     }
 }

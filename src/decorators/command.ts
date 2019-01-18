@@ -1,8 +1,8 @@
-import {Message} from "discord.js";
+import {Message, TextChannel, VoiceChannel} from "discord.js";
 import {prefix} from '../config.json';
 
 export interface ICommand {
-    handle(message: Message): void;
+    handle(message: Message, channel?: TextChannel | VoiceChannel): void;
 }
 
 export function Command() {

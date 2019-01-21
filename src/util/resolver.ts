@@ -1,9 +1,11 @@
 import {BehaviorSubject, Subject, Subscription} from "rxjs";
 import {Client, Message} from "discord.js";
+import {ChildProcess} from "child_process";
 
 export const MessageRef = new BehaviorSubject<Message|null>(null);
 export const ClientRef = new BehaviorSubject<Client|null>(null);
 export const TimeoutSubscription = new BehaviorSubject<Subscription|null>(null);
+export const ForkedRef = new BehaviorSubject<ChildProcess|null>(null);
 
 export const CancelSignal = new Subject();
 

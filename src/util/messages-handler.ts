@@ -62,7 +62,7 @@ export class MessagesHandler {
             }
         } else {
             console.log('handling as code message');
-            this.handleCodesMessages(message);
+            //this.handleCodesMessages(message);
         }
     }
 
@@ -70,18 +70,6 @@ export class MessagesHandler {
     @RequireRunningMatch()
     @ContentLength(3)
     private handleCodesMessages(message: Message) {
-        const {content, author} = message;
-        Match.findOne({
-            where: {
-                player: author.id
-            }
-        }).then(savedMatch => {
-            const match = savedMatch || new Match({
-                player: author.id,
-            });
 
-            match.code = content.toLowerCase();
-            match.save().then(() => message.delete());
-        });
     }
 }

@@ -1,8 +1,7 @@
 import {Match} from "../models";
-import {Resolver} from "./resolver";
 import {Message, RichEmbed} from "discord.js";
 
-export function notify() {
+export function notify(messageRef: Message) {
     Match.findAll()
         .then((matches: Match[]) => {
             const servers: string[] = [];
@@ -25,13 +24,8 @@ export function notify() {
                 embed.addField(server, mentions);
             });
 
-            const messageRef = Resolver.get('message') as Message | number;
-            if (messageRef === 0) {
-                return;
-            }
-
             embed.setFooter('total de jugadores: ' + matches.length);
 
-            (messageRef as Message).edit({embed});
+            messageRef.edit({embed});
         });
 }

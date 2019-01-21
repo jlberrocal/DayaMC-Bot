@@ -1,6 +1,6 @@
 {
   "token": "NTE3MTMzNjIxMzQyMjQwNzc5.Dx7DDQ._V_JbT6mnmayb0tw_yz-gJkn85k",
-  "timeout": 25000,
+  "timeout": 5000,
   "prefix": "!",
   "role": "Scrims",
   "prod": false

@@ -1,5 +1,5 @@
 import {Message} from "discord.js";
-import {Resolver} from "../util";
+import {ForkedRef, Resolver} from "../util";
 
 export function RequireRunningMatch() {
     return function handler(target: any, propertyName: string, descriptor: PropertyDescriptor) {
@@ -10,9 +10,9 @@ export function RequireRunningMatch() {
             const context = this;
             const message: Message = arguments[0];
 
-            const timeout = Resolver.get('timeout');
+            const forkedRef = ForkedRef.value;
 
-            if (timeout === 0) {
+            if (!forkedRef) {
                 console.log('there is no running match at this moment');
                 message.reply('No hay partidas para cancelar');
             } else {
